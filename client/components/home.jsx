@@ -1,16 +1,21 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
 
 import Head from './head'
-// import wave from '../assets/images/wave.jpg'
 
-const Home = () => {
+import { history } from '../redux'
+
+
+const Home = ({setUser}) => {
   const [value, setValue] = useState('')
 
   const onChange = (e) => {
     setValue(e.target.value)
   }
 
+  const onClick = () => {
+    setUser(value)
+    history.push(`/${value}`)
+  }
 
   return (
     <div>
@@ -20,11 +25,13 @@ const Home = () => {
         value={value}
         onChange={onChange}
       />
-      <img alt="wave" src="images/wave.jpg" />
-      <button type="button" onClick={() => setCounterNew(counter + 1)}>
-        updateCounter
+      <button 
+        type="button"
+        id="search-button"
+        onClick={onClick}
+      >
+        Enter
       </button>
-      <div> Hello World Dashboard {counter} </div>
     </div>
   )
 }
