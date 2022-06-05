@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import Head from './head'
 
@@ -35,6 +36,9 @@ const Home = ({setUser}) => {
         >
           Enter
         </button>
+        <Link className="border bg-gray-300 rounded p-2" id="search-link" to={`/${value}`}>
+          Enter with Link
+        </Link>
       </div>
     </div>
   )
