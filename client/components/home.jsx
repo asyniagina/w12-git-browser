@@ -22,11 +22,13 @@ const Home = ({setUser}) => {
       <Head title="Dashboard" />
       <div className="flex flex-col bg-gray-100 rounded border m-2 p-4 space-y-2">
         <input 
+          className="rounded p-2"
           type="text"
           value={value}
           onChange={onChange}
         />
         <button 
+          className="border bg-gray-300 rounded p-2"
           type="button"
           id="search-button"
           onClick={onClick}
