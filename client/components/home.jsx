@@ -18,20 +18,22 @@ const Home = ({setUser}) => {
   }
 
   return (
-    <div>
+    <div className="flex justify-center items-center">
       <Head title="Dashboard" />
-      <input 
-        type="text"
-        value={value}
-        onChange={onChange}
-      />
-      <button 
-        type="button"
-        id="search-button"
-        onClick={onClick}
-      >
-        Enter
-      </button>
+      <div className="flex flex-col bg-gray-100 rounded border m-2 p-4 space-y-2">
+        <input 
+          type="text"
+          value={value}
+          onChange={onChange}
+        />
+        <button 
+          type="button"
+          id="search-button"
+          onClick={onClick}
+        >
+          Enter
+        </button>
+      </div>
     </div>
   )
 }
