@@ -9,7 +9,7 @@ const Header = () => {
   const { userName } = useParams()
   return (
     <div>
-      <Head title="GitBrowser" />
+      <Head title="GitUser" />
       <div className="flex-wrap object-top items-center justify-center">
         <div className="bg-blue-200  text-white font-bold rounded-lg border shadow-lg p-10">
           <div id="repository-name" className="font-sans bg-blue-700 flex flex-col items-center justify-center border rounded mb-2 p-2">
