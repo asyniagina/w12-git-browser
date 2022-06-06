@@ -1,19 +1,19 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
 
 import Head from './head'
 
 import { history } from '../redux'
 
-const Home = ({ setUser }) => {
+const Home = () => {
   const [value, setValue] = useState('')
+  const [user, setUser] = useState('')
 
   const onChange = (e) => {
     setValue(e.target.value)
   }
 
   const onClick = () => {
-    console.log('My value about user: ', value)
+    console.log(user)
     setUser(value)
     history.push(`/${value}`)
   }
@@ -36,9 +36,6 @@ const Home = ({ setUser }) => {
         >
           Enter
         </button>
-        <Link className="border bg-gray-300 rounded p-2" id="search-link" to={`/${value}`}>
-          Enter with Link
-        </Link>
       </div>
     </div>
   )
