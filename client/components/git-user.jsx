@@ -11,8 +11,8 @@ const Header = () => {
     <div>
       <Head title="GitBrowser" />
       <div className="flex-wrap object-top items-center justify-center">
-        <div className="bg-indigo-300  text-white font-bold rounded-lg border shadow-lg p-10">
-          <div id="repository-name" className="font-sans bg-indigo-600 flex flex-col items-center justify-center border rounded mb-2 p-2">
+        <div className="bg-blue-200  text-white font-bold rounded-lg border shadow-lg p-10">
+          <div id="repository-name" className="font-sans bg-blue-700 flex flex-col items-center justify-center border rounded mb-2 p-2">
             <div>
               UserName
             </div>
@@ -20,7 +20,7 @@ const Header = () => {
               {userName}
             </div>
           </div>
-          <div className="font-sans bg-indigo-600 hover:text-yellow-400 flex object-right justify-center border rounded mb-2 p-2">
+          <div className="font-sans bg-blue-700 hover:text-yellow-400 flex object-right justify-center border rounded mb-2 p-2">
             <Link id="go-back" to="/">
               Go back
             </Link>
