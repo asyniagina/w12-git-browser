@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
 
-
 import Head from './head'
 import { history } from '../redux'
 
@@ -32,14 +31,15 @@ const Header = () => {
   )
 }
 
-const GitUser = ({ user, setRepo }) => {
+const GitUser = ({ setRepo }) => {
+  const { userName } = useParams()
   const [repos, setRepos] = useState([])
 
-  const url = `https://api.github.com/users/asyniagina/repos`
+  const url = `https://api.github.com/users/${userName}/repos`
 
   const onClick = (repoPath) => {
     setRepo(repoPath)
-    history.push(`/${user}/${repoPath}`)
+    history.push(`/${userName}/${repoPath}`)
   }
 
   useEffect(() => {
@@ -51,6 +51,7 @@ const GitUser = ({ user, setRepo }) => {
     })
     .then((arr) => {
       if (Array.isArray(arr)) {
+        console.log('resp2:', arr)
         setRepos(arr)
       } else {
         throw new Error(`Something is wrong. Got ${arr}`)
@@ -62,7 +63,7 @@ const GitUser = ({ user, setRepo }) => {
   return (
     <div>
       <Head title="GitUser" />
-      <Header {...{ user }} />
+      <Header {...{ userName }} />
       <table className="flex flex-col mx-4 items-center">
         <tbody>
           <tr>
