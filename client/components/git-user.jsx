@@ -3,7 +3,6 @@ import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
 
 import Head from './head'
-import { history } from '../redux'
 
 const Header = () => {
   const { userName } = useParams()
@@ -31,16 +30,12 @@ const Header = () => {
   )
 }
 
-const GitUser = ({ setRepo }) => {
+const GitUser = () => {
   const { userName } = useParams()
   const [repos, setRepos] = useState([])
 
   const url = `https://api.github.com/users/${userName}/repos`
 
-  const onClick = (repoPath) => {
-    setRepo(repoPath)
-    history.push(`/${userName}/${repoPath}`)
-  }
 
   useEffect(() => {
     console.log('my url ', url)
@@ -64,22 +59,21 @@ const GitUser = ({ setRepo }) => {
     <div>
       <Head title="GitUser" />
       <Header {...{ userName }} />
-      <table className="flex flex-col mx-4 items-center">
-        <tbody>
-          <tr>
-            <th>Repository List</th>
-          </tr>
-          {repos.map((repoObj) => {
-            return (
-              <tr key={repoObj.id}>
-                <td>
-                  <button type="button" onClick={() => onClick(repoObj.name)}>{repoObj.name}</button>
-                </td>
-              </tr>
-            )
-          })}
-        </tbody>
-      </table>
+      <div className="flex flex-col mx-4 items-center">
+          <div className="font-bold text-lg">
+            Repository List
+          </div>
+          <div id="repos" className="flex flex-col justify-center border rounded font-semibold mb-2 p-2">
+            {repos.map((rep, index) => {
+              return <Link 
+                className="hover:text-yellow-400" 
+                key={rep?.name} 
+                to={`/${userName}/${rep?.name}`}>
+                    {`${index+1}. `} {rep?.name}
+              </Link>            
+            })}
+          </div>
+      </div>
     </div>)
 }
 
