@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import axios from 'axios'
+
 
 import Head from './head'
+import { history } from '../redux'
 
 const Header = () => {
   const { userName } = useParams()
@@ -29,11 +32,50 @@ const Header = () => {
   )
 }
 
-const GitUser = () => {
-return (
-  <div>
-    <Header />
-  </div>)
+const GitUser = ({ user, setRepo }) => {
+  const [repos, setRepos] = useState([])
+
+  const url = `https://api.github.com/users/${user}/repos`
+
+  const onClick = (repoPath) => {
+    setRepo(repoPath)
+    history.push(`/${user}/${repoPath}`)
+  }
+
+  useEffect(() => {
+    axios.get(url)
+    .then((r) => r.json())
+    .then((arr) => {
+      if (Array.isArray(arr)) {
+        setRepos(arr)
+      } else {
+        throw new Error(JSON.stringify(arr))
+      }
+    })
+    .catch((err) => console.log(err))
+  }, [url])
+  
+  return (
+    <div>
+      <Head title="GitUser" />
+      <Header {...{ user }} />
+      <table className="flex flex-col mx-4 items-center">
+        <tbody>
+          <tr>
+            <th>Repository List</th>
+          </tr>
+          {repos.map((repoObj) => {
+            return (
+              <tr key={repoObj.id}>
+                <td>
+                  <button type="button" onClick={() => onClick(repoObj.name)}>{repoObj.name}</button>
+                </td>
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
+    </div>)
 }
 
 GitUser.propTypes = {}
