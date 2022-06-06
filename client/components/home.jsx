@@ -6,15 +6,12 @@ import { history } from '../redux'
 
 const Home = () => {
   const [value, setValue] = useState('')
-  const [user, setUser] = useState('')
-
+  
   const onChange = (e) => {
     setValue(e.target.value)
   }
 
   const onClick = () => {
-    console.log(user)
-    setUser(value)
     history.push(`/${value}`)
   }
 
