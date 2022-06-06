@@ -35,7 +35,7 @@ const Header = () => {
 const GitUser = ({ user, setRepo }) => {
   const [repos, setRepos] = useState([])
 
-  const url = `https://api.github.com/users/${user}/repos`
+  const url = `https://api.github.com/users/asyniagina/repos`
 
   const onClick = (repoPath) => {
     setRepo(repoPath)
@@ -43,13 +43,17 @@ const GitUser = ({ user, setRepo }) => {
   }
 
   useEffect(() => {
+    console.log('my url ', url)
     axios.get(url)
-    .then((r) => r.json())
+    .then((r) => {
+      console.log('resp:', r.data)
+      return r.data
+    })
     .then((arr) => {
       if (Array.isArray(arr)) {
         setRepos(arr)
       } else {
-        throw new Error(JSON.stringify(arr))
+        throw new Error(`Something is wrong. Got ${arr}`)
       }
     })
     .catch((err) => console.log(err))
