@@ -13,6 +13,7 @@ const Home = ({ setUser }) => {
   }
 
   const onClick = () => {
+    console.log('My value about user: ', value)
     setUser(value)
     history.push(`/${value}`)
   }
