@@ -46,7 +46,7 @@ const GitUser = ({ setRepo }) => {
     console.log('my url ', url)
     axios.get(url)
     .then((r) => {
-      console.log('resp:', r.data)
+      console.log('resp1:', r.data)
       return r.data
     })
     .then((arr) => {
