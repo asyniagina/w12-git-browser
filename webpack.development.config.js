@@ -110,7 +110,6 @@ const config = {
           }
         ]
       },
-
       {
         test: /\.(png|jpg|gif|webp)$/,
         use: [
@@ -164,7 +163,6 @@ const config = {
       }
     ]
   },
-
   plugins: [
     new ESLintPlugin({
       extensions: ['js', 'jsx'],
@@ -181,8 +179,6 @@ const config = {
           { from: 'assets/images', to: 'images' },
           { from: 'assets/fonts', to: 'fonts' },
           { from: 'assets/manifest.json', to: 'manifest.json' },
-          { from: 'index.html', to: 'index.html' },
-
           {
             from: 'install-sw.js',
             to: 'js/install-sw.js',
