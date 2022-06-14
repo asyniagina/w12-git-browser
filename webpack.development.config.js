@@ -109,7 +109,6 @@ const config = {
           }
         ]
       },
-
       {
         test: /\.(png|jpg|gif|webp)$/,
         use: [
