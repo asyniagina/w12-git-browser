@@ -22,6 +22,7 @@ const Home = () => {
         <input
           className="rounded p-2"
           type="text"
+          id="input-field"
           value={value}
           onChange={onChange}
         />
