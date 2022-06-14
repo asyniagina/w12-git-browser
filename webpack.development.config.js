@@ -100,7 +100,6 @@ const config = {
               publicPath: '../'
             }
           },
-
           { loader: 'css-loader', options: { sourceMap: true } },
           {
             loader: 'postcss-loader'
@@ -205,7 +204,6 @@ const config = {
       },
       { parallel: 100 }
     ),
-
     new ReactRefreshWebpackPlugin({
       overlay: {
         sockIntegration: 'wds'
